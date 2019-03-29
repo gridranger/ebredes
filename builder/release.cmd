@@ -3,7 +3,7 @@ set filename=%1
 IF NOT EXIST venv (
     call python.exe -m venv venv
     call venv\Scripts\activate
-    call pip install unoconv
+    call pip install -r builder\requirements.txt
 ) ELSE (
     call venv\Scripts\activate
 )
