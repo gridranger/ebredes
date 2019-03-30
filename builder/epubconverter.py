@@ -13,8 +13,11 @@ class EpubConverter(Converter):
         self._output_file_path = "target/{}.epub".format(output_file_name)
         self._templates_folder = "builder/templates"
         self._workspace_folder = "target/ws"
+        self._raw_metadata = {}
+        self._templates = {}
 
     def convert(self):
+        self._load_templates()
         self._create_workspace()
         self._process_content()
         # http://www.jedisaber.com/eBooks/Introduction.shtml
@@ -28,6 +31,12 @@ class EpubConverter(Converter):
         #     metadata
         # zip the workspace
         # remove workspace
+
+    def _load_templates(self):
+        templates = ["content", "navpoint", "title", "toc.ncx"]
+        for template in templates:
+            with open("builder/templates/{}.html".format(template)) as file_handler:
+                self._templates[template] = file_handler.read()
 
     def _create_workspace(self):
         self._create_folders()
@@ -45,12 +54,13 @@ class EpubConverter(Converter):
 
     def _create_css(self):
         file_name = "stylesheet.css"
-        copyfile("{}/{}".format(self._templates_folder, file_name), "{}/{}".format(self._workspace_folder, file_name))
+        copyfile("{}/{}".format(self._templates_folder, file_name),
+                 "{}/OEBPS/{}".format(self._workspace_folder, file_name))
 
     def _process_content(self):
         sources = self._process_input_files()
-        raw_metadata = self._read_metadata()
-        a = 1
+        self._raw_metadata = self._read_metadata()
+        self._create_title_page()
 
     @staticmethod
     def _read_metadata():
@@ -59,7 +69,10 @@ class EpubConverter(Converter):
         return raw_metadata
 
     def _create_title_page(self):
-
+        title_page  = self._templates["title"]
+        title_page = title_page.format(title=self._raw_metadata["title"], author=self._raw_metadata["author"])
+        with open("{}/OEBPS/title.xhtml".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
+            file_handler.write(title_page)
 
     def _create_metadata(self):
         pass

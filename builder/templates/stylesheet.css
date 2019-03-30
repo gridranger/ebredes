@@ -18,3 +18,13 @@ p {
 h1 {
   text-align: center;
 }
+
+p.book_title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+p.book_meta {
+  text-align: center;
+}
