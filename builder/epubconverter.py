@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Bárdos Dávid'
 
-from time import time
 from json import load
 from os import makedirs
-from shutil import copyfile
+from shutil import copyfile, rmtree
 from sys import argv
 from uuid import uuid1
 from zipfile import ZipFile
@@ -27,7 +26,7 @@ class EpubConverter(Converter):
         self._create_workspace()
         self._process_content()
         self._compress_workspace()
-        # remove workspace
+        self._remove_workspace()
 
     def _load_templates(self):
         templates = ["content", "metadata", "navpoint", "title", "toc.ncx"]
@@ -155,6 +154,9 @@ class EpubConverter(Converter):
         with ZipFile(self._output_file_path, 'w') as file_handler:
             for file_path in file_list:
                 file_handler.write(file_path, file_path.replace(self._workspace_folder, ""))
+
+    def _remove_workspace(self):
+        rmtree(self._workspace_folder)
 
 
 if __name__ == "__main__":
