@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Bárdos Dávid'
 
+from time import time
 from json import load
 from os import makedirs
 from shutil import copyfile
@@ -57,6 +58,7 @@ class EpubConverter(Converter):
         self._raw_metadata = self._read_metadata()
         self._create_title_page()
         self._create_content_pages_and_generate_nav_points(sources)
+        self._create_table_of_contents()
 
     @staticmethod
     def _read_metadata():
@@ -101,14 +103,11 @@ class EpubConverter(Converter):
         pass
 
     def _create_table_of_contents(self):
-        with open("{}/navpoint.html".format(self._templates_folder)) as file_handler:
-            navpoint_template = file_handler.read()
-        with open("{}/toc.ncx.html".format(self._templates_folder)) as file_handler:
-            toc_template = file_handler.read()
-        nav_map = ""
-        # TODO continue
-        with open("{}/toc.ncx".format(self._workspace_folder), "w") as file_handler:
-            file_handler.write(toc_template)
+        unique_key = "gridranger-{}".format(time())
+        toc = self._templates["toc.ncx"]
+        toc = toc.format(unique_key=unique_key, title=self._raw_metadata["title"], nav_map=self._nav_points)
+        with open("{}/OEBPS/toc.ncx".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
+            file_handler.write(toc)
 
 if __name__ == "__main__":
     e = EpubConverter(argv[1])
