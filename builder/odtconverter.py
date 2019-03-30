@@ -37,7 +37,7 @@ class OdtConverter(Converter):
 
     def _process_raw_document_content(self):
         for line in self._raw_document_content:
-            if line[1:3] == "# ":
+            if line.startswith("# "):
                 new_element = H(outlinelevel=1, stylename=self._h1_style, text=line.replace("# ", ""))
             else:
                 new_element = P(text=line, stylename=self._p_style)

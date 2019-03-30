@@ -23,6 +23,7 @@ class Converter(ABC):
     def _process_file(file_name):
         with open(file_name, encoding="utf8") as file_handler:
             raw_text = file_handler.read()
+            raw_text = raw_text.replace("\ufeff", "")
             raw_text = raw_text.replace("--", "\u2013")
         lines = raw_text.split("\n\n")
         return lines
