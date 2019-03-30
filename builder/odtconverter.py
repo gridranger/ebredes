@@ -4,11 +4,11 @@ __author__ = 'Bárdos Dávid'
 from odf.opendocument import OpenDocumentText
 from odf.style import ParagraphProperties, Style, TextProperties
 from odf.text import H, P
-from os import listdir
 from sys import argv
+from converter import Converter
 
 
-class OdtConverter(object):
+class OdtConverter(Converter):
     def __init__(self, output_file_name):
         self._document = OpenDocumentText()
         self._raw_document_content = []
@@ -18,7 +18,9 @@ class OdtConverter(object):
 
     def convert(self):
         self._generate_styles()
-        self._process_input_files()
+        sources = self._process_input_files()
+        for source in sources:
+            self._raw_document_content += source
         self._process_raw_document_content()
         self._document.save(self._output_file_path)
 
@@ -32,21 +34,6 @@ class OdtConverter(object):
         self._p_style.addElement(ParagraphProperties(attributes={"textindent": "1.25cm", "textalign": "justify",
                                                                  "orphans": 2, "widows": 2}))
         self._document.styles.addElement(self._p_style)
-
-    def _process_input_files(self):
-        current_folder_content = listdir(".")
-        for file_name in current_folder_content:
-            if file_name.endswith(".txt"):
-                new_lines = self._process_file(file_name)
-                self._raw_document_content += new_lines
-
-    @staticmethod
-    def _process_file(file_name):
-        with open(file_name, encoding="utf8") as file_handler:
-            raw_text = file_handler.read()
-            raw_text = raw_text.replace("--", "\u2013")
-        lines = raw_text.split("\n\n")
-        return lines
 
     def _process_raw_document_content(self):
         for line in self._raw_document_content:
