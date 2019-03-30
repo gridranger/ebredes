@@ -38,6 +38,7 @@ class EpubConverter(Converter):
         self._create_folders()
         self._create_mimetype_file()
         self._create_css()
+        self._create_container_xml()
 
     def _create_folders(self):
         makedirs(self._workspace_folder, exist_ok=True)
@@ -52,6 +53,11 @@ class EpubConverter(Converter):
         file_name = "stylesheet.css"
         copyfile("{}/{}".format(self._templates_folder, file_name),
                  "{}/OEBPS/{}".format(self._workspace_folder, file_name))
+
+    def _create_container_xml(self):
+        file_name = "container.xml"
+        copyfile("{}/{}".format(self._templates_folder, file_name),
+                 "{}/META-INF/{}".format(self._workspace_folder, file_name))
 
     def _process_content(self):
         sources = self._process_input_files()
