@@ -26,5 +26,6 @@ p.book_title {
 }
 
 p.book_meta {
+  text-indent: 0;
   text-align: center;
 }

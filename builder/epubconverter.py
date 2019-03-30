@@ -15,18 +15,13 @@ class EpubConverter(Converter):
         self._workspace_folder = "target/ws"
         self._raw_metadata = {}
         self._templates = {}
+        self._nav_points = ""
 
     def convert(self):
         self._load_templates()
         self._create_workspace()
         self._process_content()
         # http://www.jedisaber.com/eBooks/Introduction.shtml
-        # processing text
-        #     read source files
-        #     read metadata
-        #     create title page
-        #     create xhtml structure
-        #     adding styles
         #     filling toc
         #     metadata
         # zip the workspace
@@ -61,6 +56,7 @@ class EpubConverter(Converter):
         sources = self._process_input_files()
         self._raw_metadata = self._read_metadata()
         self._create_title_page()
+        self._create_content_pages_and_generate_nav_points(sources)
 
     @staticmethod
     def _read_metadata():
@@ -73,6 +69,33 @@ class EpubConverter(Converter):
         title_page = title_page.format(title=self._raw_metadata["title"], author=self._raw_metadata["author"])
         with open("{}/OEBPS/title.xhtml".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
             file_handler.write(title_page)
+
+    def _create_content_pages_and_generate_nav_points(self, sources):
+        for counter, raw_content in enumerate(sources):
+            xhtml_content = self._create_content_page(raw_content)
+            file_name = "chapter{}.xhtml".format(counter+1)
+            file_path = "{}/OEBPS/{}".format(self._workspace_folder, file_name)
+            with open(file_path, "w", encoding='utf-8') as file_handler:
+                file_handler.write(xhtml_content)
+            title = raw_content[0].replace("# ", "")
+            nav_point = self._templates["navpoint"]
+            nav_point = nav_point.format(nav_id="chapter{}".format(counter+1), order_number=counter+1, nav_name=title,
+                                         file_name=file_name)
+            self._nav_points += nav_point
+
+    def _create_content_page(self, raw_content):
+        title = ""
+        text = ""
+        for line in raw_content:
+            if line.startswith("# ") and title == "":
+                title = line.replace("# ", "")
+            elif line.startswith("# "):
+                raise RuntimeError("More than one title defined in a chapter!")
+            else:
+                text += "  <p>{}</p>\n".format(line)
+        content_page = self._templates["content"]
+        content_page = content_page.format(title=title, text=text)
+        return content_page
 
     def _create_metadata(self):
         pass
