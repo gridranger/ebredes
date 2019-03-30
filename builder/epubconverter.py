@@ -14,6 +14,7 @@ class EpubConverter(Converter):
         self._output_file_path = "target/{}.epub".format(output_file_name)
         self._templates_folder = "builder/templates"
         self._workspace_folder = "target/ws"
+        self._chapter_file_names = []
         self._raw_metadata = {}
         self._templates = {}
         self._nav_points = ""
@@ -23,13 +24,11 @@ class EpubConverter(Converter):
         self._create_workspace()
         self._process_content()
         # http://www.jedisaber.com/eBooks/Introduction.shtml
-        #     filling toc
-        #     metadata
         # zip the workspace
         # remove workspace
 
     def _load_templates(self):
-        templates = ["content", "navpoint", "title", "toc.ncx"]
+        templates = ["content", "metadata", "navpoint", "title", "toc.ncx"]
         for template in templates:
             with open("builder/templates/{}.html".format(template)) as file_handler:
                 self._templates[template] = file_handler.read()
@@ -65,11 +64,13 @@ class EpubConverter(Converter):
         self._create_title_page()
         self._create_content_pages_and_generate_nav_points(sources)
         self._create_table_of_contents()
+        self._create_metadata()
 
     @staticmethod
     def _read_metadata():
         with open(".metadata.json", encoding='utf-8') as file_handler:
             raw_metadata = load(file_handler)
+        raw_metadata["uuid"] = "gridranger-{}".format(time())
         return raw_metadata
 
     def _create_title_page(self):
@@ -82,12 +83,15 @@ class EpubConverter(Converter):
         for counter, raw_content in enumerate(sources):
             xhtml_content = self._create_content_page(raw_content)
             file_name = "chapter{}.xhtml".format(counter+1)
+            self._chapter_file_names.append(file_name)
             file_path = "{}/OEBPS/{}".format(self._workspace_folder, file_name)
             with open(file_path, "w", encoding='utf-8') as file_handler:
                 file_handler.write(xhtml_content)
             title = raw_content[0].replace("# ", "")
             nav_point = self._templates["navpoint"]
-            nav_point = nav_point.format(nav_id="chapter{}".format(counter+1), order_number=counter+1, nav_name=title,
+            nav_point = nav_point.format(nav_id="chapter{}".format(counter+1),
+                                         order_number=counter+1,
+                                         nav_name=title,
                                          file_name=file_name)
             self._nav_points += nav_point
 
@@ -106,12 +110,28 @@ class EpubConverter(Converter):
         return content_page
 
     def _create_metadata(self):
-        pass
+        manifest = ""
+        spine = ""
+        for chapter_file_name in self._chapter_file_names:
+            new_manifest_line = """    <item id="{}" href="{}" media-type="application/xhtml+xml" />\n"""
+            manifest += new_manifest_line.format(chapter_file_name.replace(".xhtml", ""), chapter_file_name)
+            new_spine_line = """    <itemref idref="{}" />\n"""
+            spine += new_spine_line.format(chapter_file_name.replace(".xhtml", ""))
+        metadata = self._templates["metadata"]
+        metadata = metadata.format(title=self._raw_metadata["title"],
+                                   author=self._raw_metadata["author"],
+                                   uuid=self._raw_metadata["uuid"],
+                                   language=self._raw_metadata["language"],
+                                   manifest=manifest,
+                                   spine=spine)
+        with open("{}/OEBPS/metadata.opf".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
+            file_handler.write(metadata)
 
     def _create_table_of_contents(self):
-        unique_key = "gridranger-{}".format(time())
         toc = self._templates["toc.ncx"]
-        toc = toc.format(unique_key=unique_key, title=self._raw_metadata["title"], nav_map=self._nav_points)
+        toc = toc.format(uuid=self._raw_metadata["uuid"],
+                         title=self._raw_metadata["title"],
+                         nav_map=self._nav_points)
         with open("{}/OEBPS/toc.ncx".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
             file_handler.write(toc)
 
