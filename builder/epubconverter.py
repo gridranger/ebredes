@@ -6,6 +6,8 @@ from json import load
 from os import makedirs
 from shutil import copyfile
 from sys import argv
+from uuid import uuid1
+from zipfile import ZipFile
 from converter import Converter
 
 
@@ -14,6 +16,7 @@ class EpubConverter(Converter):
         self._output_file_path = "target/{}.epub".format(output_file_name)
         self._templates_folder = "builder/templates"
         self._workspace_folder = "target/ws"
+        self._book_file_paths = []
         self._chapter_file_names = []
         self._raw_metadata = {}
         self._templates = {}
@@ -23,8 +26,7 @@ class EpubConverter(Converter):
         self._load_templates()
         self._create_workspace()
         self._process_content()
-        # http://www.jedisaber.com/eBooks/Introduction.shtml
-        # zip the workspace
+        self._compress_workspace()
         # remove workspace
 
     def _load_templates(self):
@@ -45,18 +47,22 @@ class EpubConverter(Converter):
         makedirs("{}/OEBPS".format(self._workspace_folder), exist_ok=True)
 
     def _create_mimetype_file(self):
-        with open("{}/mimetype".format(self._workspace_folder), "w") as file_handler:
+        file_path = "{}/mimetype".format(self._workspace_folder)
+        with open(file_path, "w") as file_handler:
             file_handler.write("application/epub+zip")
+        self._book_file_paths.append(file_path)
 
     def _create_css(self):
         file_name = "stylesheet.css"
-        copyfile("{}/{}".format(self._templates_folder, file_name),
-                 "{}/OEBPS/{}".format(self._workspace_folder, file_name))
+        file_path = "{}/OEBPS/{}".format(self._workspace_folder, file_name)
+        copyfile("{}/{}".format(self._templates_folder, file_name), file_path)
+        self._book_file_paths.append(file_path)
 
     def _create_container_xml(self):
         file_name = "container.xml"
-        copyfile("{}/{}".format(self._templates_folder, file_name),
-                 "{}/META-INF/{}".format(self._workspace_folder, file_name))
+        file_path = "{}/META-INF/{}".format(self._workspace_folder, file_name)
+        copyfile("{}/{}".format(self._templates_folder, file_name), file_path)
+        self._book_file_paths.append(file_path)
 
     def _process_content(self):
         sources = self._process_input_files()
@@ -70,14 +76,16 @@ class EpubConverter(Converter):
     def _read_metadata():
         with open(".metadata.json", encoding='utf-8') as file_handler:
             raw_metadata = load(file_handler)
-        raw_metadata["uuid"] = "gridranger-{}".format(time())
+        raw_metadata["uuid"] = str(uuid1())
         return raw_metadata
 
     def _create_title_page(self):
+        file_path = "{}/OEBPS/title.xhtml".format(self._workspace_folder)
         title_page  = self._templates["title"]
         title_page = title_page.format(title=self._raw_metadata["title"], author=self._raw_metadata["author"])
-        with open("{}/OEBPS/title.xhtml".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
+        with open(file_path, "w", encoding='utf-8') as file_handler:
             file_handler.write(title_page)
+        self._book_file_paths.append(file_path)
 
     def _create_content_pages_and_generate_nav_points(self, sources):
         for counter, raw_content in enumerate(sources):
@@ -110,6 +118,7 @@ class EpubConverter(Converter):
         return content_page
 
     def _create_metadata(self):
+        file_path = "{}/OEBPS/metadata.opf".format(self._workspace_folder)
         manifest = ""
         spine = ""
         for chapter_file_name in self._chapter_file_names:
@@ -124,16 +133,29 @@ class EpubConverter(Converter):
                                    language=self._raw_metadata["language"],
                                    manifest=manifest,
                                    spine=spine)
-        with open("{}/OEBPS/metadata.opf".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
+        with open(file_path, "w", encoding='utf-8') as file_handler:
             file_handler.write(metadata)
+        self._book_file_paths.append(file_path)
 
     def _create_table_of_contents(self):
+        file_path = "{}/OEBPS/toc.ncx".format(self._workspace_folder)
         toc = self._templates["toc.ncx"]
         toc = toc.format(uuid=self._raw_metadata["uuid"],
                          title=self._raw_metadata["title"],
                          nav_map=self._nav_points)
-        with open("{}/OEBPS/toc.ncx".format(self._workspace_folder), "w", encoding='utf-8') as file_handler:
+        with open(file_path, "w", encoding='utf-8') as file_handler:
             file_handler.write(toc)
+        self._book_file_paths.append(file_path)
+
+    def _compress_workspace(self):
+        file_list = []
+        file_list += self._book_file_paths
+        for chapter_file_name in self._chapter_file_names:
+            file_list.append("{}/OEBPS/{}".format(self._workspace_folder, chapter_file_name))
+        with ZipFile(self._output_file_path, 'w') as file_handler:
+            for file_path in file_list:
+                file_handler.write(file_path, file_path.replace(self._workspace_folder, ""))
+
 
 if __name__ == "__main__":
     e = EpubConverter(argv[1])
