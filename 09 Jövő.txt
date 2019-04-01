@@ -42,9 +42,9 @@ Behunytam a szemem. Túl sok volt ez. Válaszolni akartam, felkelni, és megöle
 
 A konyhában az a felszabadító érzés öntött el, hogy csak saját magamnak kellett reggelit csinálnom, mert tudtam, hogy ez a felnőtt férfi képes ellátni magát anélkül, hogy haragra lobbanna irántam.
 
-Így is volt. Mikor frissen, borotváltan előkerült fürdőből, megcsinálta a saját ételét. Még meg is kínált. Megrázó, mennyire jól estek ezek teljesen alapvető dolgok. Amikor ezt szóvá tettem, elborult az arca.
+Így is volt. Mikor frissen, borotváltan előkerült fürdőből, megcsinálta a saját ételét. Még meg is kínált. Megrázó, mennyire jól estek ezek a teljesen alapvető dolgok. Amikor ezt szóvá tettem, elborult az arca.
 
--- Még mindig nem tudom felfogni, hogy míg azt hittem, boldogan, kalandosan élsz, valójában mélyen megnyomorították a lelked. Bár megvédhettelek volna valahogy! Úgy szeretném meg nem történtté tenni!
+-- Nagyon fáj a gondolat, hogy míg azt hittem, boldogan, kalandosan élsz, valójában mélyen megcsonkították a lelked. Bár megvédhettelek volna valahogy! Úgy szeretném meg nem történtté tenni!
 
 Együttérzést, tehetetlenséget és fájdalmat láttam rajta. Túl sok érzelem volt ez ahhoz, hogy feleljek. Egy hosszú, néma ölelés lett volna a válaszom, de nem volt bátorságom hozzá, hát elterelem a szót, és Robiról beszélgettünk, amíg a reggeli tartott.
 
@@ -108,7 +108,7 @@ Izgatottan odaadtam neki a telefonomat.
 
 -- Dehogy! Egek! -- kiáltott fel. -- Ilyen tiszta, hatékony struktúrát akárki nem tud csak úgy létrehozni.
 
--- Hát, jó mintákat néztem, meg persze a fejlesztőkörnyezet is vezette a kezem -- tártam szét a karom. -- Clean coding, Stackoverflow...
+-- Hát, a fejlesztőkörnyezet is vezette a kezem, meg persze jó mintákat néztem -- tártam szét a karom. --Stackoverflow, Clean Code...
 
 -- Igen, beszélj még mocskosul... -- zihálta kimeredt szemmel, aztán felnevetett, és úgy magyarázta tovább borzasztó lelkesen: -- Nézd, számos fejlesztővel dolgoztam már. Mindenki kicsit más logikával dolgozik. Másként strukturál, nevez el dolgokat. Ott van a gondolkodásmód lenyomata benne. -- A szemembe nézett. -- Sosem hittem, hogy egy kód lehet szexi, de legszívesebben...
 
@@ -156,7 +156,7 @@ Ahogy becsuktam magam mögött az ajtót egy zavarban elrebegett köszönés ut�
 
 Jó döntés volt, bátorítottam magam. Nem tanácsos belezuhanni ilyen állapotban egy új kapcsolatba. De új ez egyáltalán? Elvégre nem az első jóképű jöttment mézesmázos szövegének ülnék fel. És nem arról van szó, hogy kínoz a magány, ezért bárkivel beérem. Kifejezetten ő kell.
 
-Hányszor nyomtam el magam a házasságomban, mikor tartottam magam ahhoz, ami Miles szerint ésszerű volt. Ahogy most is. Egy rendkívüli helyzetet próbáltam, hétköznapi életbölcsességek alapján megoldani.
+Hányszor nyomtam el magam a házasságomban, mikor tartottam magam ahhoz, ami Miles szerint ésszerű volt. Ahogy most is. Egy rendkívüli helyzetet próbáltam hétköznapi életbölcsességek alapján megoldani.
 
 Álltam a lefelé araszoló ócska liftben, és belül tomboltam. Úgy éreztem, két kézzel lököm szét mindjárt a felvonó oldalát, csak kitörhessek ebből az átkozott helyzetből, ahol üvegfal mögött van, amit el akarok érni.
 
@@ -178,25 +178,25 @@ Mielőtt kiléptem a folyosóra, még összekacsintottam magammal.
 
 Nyugodt voltam. Elégedett. Minden rendben lesz, akármi történik is.
 
--- Nézd -- kezdete megilletődve, és a feje búbját vakargatta zavarában --, tényleg igyekszem barátot és nem nőt látni benned. De most... Huh! -- Mikor újra elkaptam a tekintetét, hirtelen nyugodt lett a hangja: -- Még sosem láttalak ilyen gyönyörűnek.
+-- Nézd -- kezdete megilletődve, és a tarkóját vakargatta zavarában --, tényleg igyekszem barátot és nem nőt látni benned. De most... Huh! -- Mikor újra elkaptam a tekintetét, hirtelen nyugodt lett a hangja: -- Még sosem láttalak ilyen gyönyörűnek.
 
 Ahogy néztük egymást, kacskaringós indák ezrein virágzott ki körülöttem a levegő. Akárcsak legelső alkalommal. Nem tudom, mennyi idő telt el, mielőtt egymáshoz léptünk. De akkor, tíz év után először, újra őszintén tudtam csókolni.
 
-Mennyit hibáztam. Mennyit tűrtem. Mennyi megaláztatást viseltem el. Mennyit harcoltam. Végre visszakaptam valamit az élettől cserébe, amiért a ott, hídon visszafordultam a világ végéről.
+Mennyit hibáztam. Mennyit tűrtem. Mennyi megaláztatást viseltem el. Mennyit harcoltam. Végre visszakaptam valamit az élettől cserébe, amiért ott, hídon visszafordultam a világ végéről.
 
-Tehettem, amit kívántam és megkaptam, amit kívántam, mindenféle kényszertől mentesen. Ez volt kettőnk titka. Feloldódni, megnyílni, összefonódni, összeolvadni és közben önmagunkhoz hű maradni.
+Tehettem, amit kívántam, és megkaptam, amit kívántam, mindenféle kényszertől mentesen. Ez volt kettőnk titka. Feloldódni, megnyílni, összefonódni, összeolvadni és közben önmagunkhoz hű maradni.
 
 -- Emlékszel, amikor úgy eláztunk a szüleid kertjében? -- kérdezte András egyik közös zuhanyzásunk után.
 
 Egy bögre teával a kezében állt a fürdőszoba ajtajában, és gyönyörködve nézett, ahogy a hajamat törölgettem.
 
-Kérdése felidézte bennem. Első együtt töltött hétvégénken történt. Felvetettem, hogy feküdjünk ki beszélgetni a kertbe, a meleg nyári este csillagai alá. Kinn azonban egyetlen csillagot sem láttunk, helyette üde, nyári szél fogadott minket, így inkább vékony plédek között bújtunk össze a kerti pavilonban. Önfeledt egymás felé fordulásunkból egyszerre egy nyári vihar kellős közepén találtuk magunkat. Először jó ötletnek tűnt megvárni, hogy elálljon az eső, de a szél perceken belül eláztatott minket oldalról, az ég pedig kitartóan zengett. A gyepen át nyolc méter lehetett csak a ház legfeljebb. Cipőnket a plédbe göngyöltük, és nevetve nekivágtunk. Egy szempillantás, és már folyt a víz a ruhánk alatt. Pár lépés után megfogta a kezem, és megállított.
+Emlékeztem. Első együtt töltött hétvégénken történt. Felvetettem, hogy feküdjünk ki beszélgetni a kertbe, a meleg nyári este csillagai alá. Kinn azonban egyetlen csillagot sem láttunk, helyette üde, nyári szél fogadott minket, így inkább vékony plédek között bújtunk össze a kerti pavilonban. Önfeledt egymás felé fordulásunkból egyszerre egy nyári vihar kellős közepén találtuk magunkat. Először jó ötletnek tűnt megvárni, hogy elálljon az eső, de a szél perceken belül eláztatott minket oldalról, az ég pedig kitartóan zengett. A gyepen át nyolc méter lehetett csak a ház legfeljebb. Cipőnket a plédbe göngyöltük, és nevetve nekivágtunk. Egy szempillantás, és már folyt a víz a ruhánk alatt. Pár lépés után megfogta a kezem, és megállított.
 
 -- Ne siess úgy -- mondta nevetve, és magához húzott.
 
 Meglepett. Gyerekként megtanultuk, hogy ha esik, azonnal menjünk tető alá, és ne ázzunk el, mert megfázhatunk. Sokszor nem is gondolkodunk, csak csináljuk, amit megszoktunk. Ebből zökkentett ki. Felnőtt nő voltam, egy hőségre érkező meleg zivatarban, pár méterre a törölközőktől és hajszárítótól. Dönthettem úgy, hogy hagyom magam ázni, ha szeretném. Szívesen áztam. Kislány korom óta izgatott az eső. Most sem zavart, ahogy folyt az arcomon, pedig a szemem sem tudtam kinyitni tőle rendesen.
 
-Emlékszem jóleső csókra a nyári vihar kellős közepén. A frissen beteljesülő szerelem és a újonnan megértett önállóság korlátlansága vegyült benne a ruhánkon kívül-belül patakzó víz izgalmas élményével és a fű hűvös érintésével a meztelen talpamon.
+Emlékszem jóleső csókra a nyári vihar kellős közepén. A frissen beteljesülő szerelem és az újonnan megértett önállóság korlátlansága vegyült benne a ruhánkon kívül-belül patakzó víz izgalmas élményével és a fű hűvös érintésével a meztelen talpamon.
 
 Már értettem, miért sírtam el magam azon az októberi hajnalon, évek óta szeretetlenül, akaratomtól megfosztva. Hogy nem jutott eszembe mindez korábban?
 
@@ -204,16 +204,16 @@ Már értettem, miért sírtam el magam azon az októberi hajnalon, évek óta s
 
 -- Mióta betoppantál az ajtón, az jutott eszembe, hogy megint olyan az arcod. -- Kortyolt egyet a teából, és mosolyogva hozzátette: -- És most még a hajad is vizes.
 
-Amikor elhagytam a családom, azt hittem, ha lenő a hajam festett része, akkor nyerem vissza önmagam teljesen. De valóság ritkán ilyen jelképes. Félelmek, hamis bölcsességek, féligazságok, más céljait szolgáló korlátok összevisszaságában bolyogtam, és ott is ragadhattam volna örökre akár. Bátorság kellett és erő, hogy ne tévelyegjek többet közöttük, és teljesen azzá váljak, akivé szerettem volna lenni.
+Amikor elhagytam a családom, azt hittem, ha lenő a hajam festett része, akkor nyerem vissza önmagam teljesen. De valóság ritkán ilyen jelképes. Félelmek, hamis bölcsességek, féligazságok, más céljait szolgáló korlátok összevisszaságában bolyogtam, és ott is ragadhattam volna örökre akár. Bátorság kellett, erő, és a legváratlanabb helyekről érkező segítség, hogy ne tévelyegjek többet közöttük, és teljesen azzá váljak, akivé szerettem volna lenni.
 
 Sosem hoztam jobb döntést, mint amikor elhatároztam, hogy merem azt tenni, amit szeretnék. Ami jól esik. Ez a három egyszerű szó helyreállította bennem az utolsó hiányt.
 
-Amikor réges-rég a hősének nevezett, azt csodálta bennem, amit ekkor nyertem vissza. Hogy tudom, mit szeretnék, és teszek érte. Hiszen megoldok és elérek bármit önállóan. A saját életem. A saját felelősségem. A saját döntéseim.
+Amikor réges-rég a hősének nevezett, azt csodálta bennem, amit ekkor nyertem vissza. Hogy látom a célom, és teszek érte. Hiszen megoldok és elérek bármit önállóan. A saját életem. A saját felelősségem. A saját döntéseim.
 
 Hétfőn vonaton ültem szülővárosom felé. András ajánlotta, hogy elkísér, de dolgoznia kellett, én pedig kész voltam egyedül szüleim elé állni, bármi várjon is részükről.
 
 Elégedetten figyeltem a tájat, amely elsuhant az ablak előtt. Tudtam, hova tartok, és megnyugtatott, hogy kiszámíthatatlanabb és jobb jövő elé néztem, mint mikor halálomig láttam előre, hogyan ismétlem ugyanazt a számomra lélektelen háziasszonyrutint.
 
-Én, régi-új-örök Szerelmem, Robi, egy izgalmas karrier, szüleim, barátaim, a rajzszenvedélyem, és bármi, amit szeretnék még, minden belefér az életembe.
+Én, régi-új-igaz Szerelmem, Robi, egy izgalmas karrier, szüleim, barátaim, a rajzszenvedélyem, és bármi, amit szeretnék még, minden belefér az életembe.
 
-Hátradőltem, és behunytam a szemem. Végre nyugodtan pihenhetek egyet. Még hosszú az út.
+Hátradőltem, és behunytam a szemem. Végre nyugodtan pihenhetek. Még hosszú az út.
