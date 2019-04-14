@@ -2,3 +2,4 @@
 builder/__pycache__
 target
 venv
+*.pyc
