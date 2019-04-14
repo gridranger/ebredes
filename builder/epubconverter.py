@@ -110,6 +110,9 @@ class EpubConverter(Converter):
                 title = line.replace("# ", "")
             elif line.startswith("# "):
                 raise RuntimeError("More than one title defined in a chapter!")
+            elif line.startswith("András:") or line.startswith("Erika:"):
+                line = line.replace(": ", " üzenete:</span><br/>")
+                text += """  <p class="msn"><span style="color: grey;">{}</p>\n""".format(line)
             else:
                 text += "  <p>{}</p>\n".format(line)
         content_page = self._templates["content"]
