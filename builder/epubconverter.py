@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Bárdos Dávid'
 
-from json import load
 from os import makedirs
 from shutil import copyfile, rmtree
 from sys import argv
@@ -73,8 +72,7 @@ class EpubConverter(Converter):
 
     @staticmethod
     def _read_metadata():
-        with open(".metadata.json", encoding='utf-8') as file_handler:
-            raw_metadata = load(file_handler)
+        raw_metadata = Converter._read_metadata()
         raw_metadata["uuid"] = str(uuid1())
         return raw_metadata
 

@@ -14,6 +14,7 @@ IF NOT EXIST target (
 
 call python.exe builder\epubconverter.py "%filename%"
 Rem call ebook-convert "target\%filename%.epub" "target\%filename%.mobi"
+call python.exe builder\docxconverter.py %filename%
 call python.exe builder\odtconverter.py "%filename%"
 REm call python.exe venv\Scripts\unoconv -f pdf "target/%filename%.odt"
 IF NOT '%ERRORLEVEL%' == '0' (
