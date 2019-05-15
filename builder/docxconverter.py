@@ -24,6 +24,7 @@ class DocxConverter(Converter):
         for source in sources:
             self._raw_document_content += source
         self._process_raw_document_content()
+        self._update_metadata()
         self._document.save(self._output_file_path)
 
     def _set_page_size_to_a4(self):
@@ -79,6 +80,13 @@ class DocxConverter(Converter):
         year_p.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
         year = year_p.add_run(self._raw_metadata["rights"][-4:])
         year.font.italic = True
+
+    def _update_metadata(self):
+        meta = self._document.core_properties
+        meta.author = self._raw_metadata["author"]
+        meta.language = self._raw_metadata["language"]
+        meta.title = self._raw_metadata["title"]
+        meta.comments = "source is available at {}".format(self._raw_metadata["source"])
 
 if __name__ == "__main__":
     d = DocxConverter(argv[1])
