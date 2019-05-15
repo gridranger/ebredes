@@ -2,13 +2,21 @@
 __author__ = 'Bárdos Dávid'
 
 from abc import ABC, abstractmethod
+from json import load
 from os import listdir
+from re import sub
 
 
 class Converter(ABC):
     @abstractmethod
     def convert(self):
         pass
+
+    @staticmethod
+    def _read_metadata():
+        with open(".metadata.json", encoding='utf-8') as file_handler:
+            raw_metadata = load(file_handler)
+        return raw_metadata
 
     @staticmethod
     def _process_input_files():
@@ -25,5 +33,15 @@ class Converter(ABC):
             raw_text = file_handler.read()
             raw_text = raw_text.replace("\ufeff", "")
             raw_text = raw_text.replace("--", "\u2013")
+            raw_text = sub(r"^(\")", "\u201E", raw_text)
+            raw_text = sub(r" (\")", " \u201E", raw_text)
+            raw_text = sub(r"(\n\")", "\n\u201E", raw_text)
+            raw_text = sub(r"(\")$", "\u201D", raw_text)
+            raw_text = sub(r"(\") ", "\u201D ", raw_text)
+            raw_text = sub(r"(\")\n", "\u201D\n", raw_text)
+            raw_text = sub(r"(\"),", "\u201D,", raw_text)
+            raw_text = sub(r"(\")!", "\u201D!", raw_text)
+            raw_text = sub(r"(\")\?", "\u201D?", raw_text)
+            raw_text = sub(r"(\").", "\u201D.", raw_text)
         lines = raw_text.split("\n\n")
         return lines
